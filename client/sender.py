@@ -1,11 +1,19 @@
 import requests
+import time
 
-pipedream_url = "http://165.22.255.126:5000/upload"
-image_path = 'D:/CODE/projects/python/Dhara-BackEnd/samples/OIP.jpeg'
+def upload_image(image_path):
+    url = 'http://165.22.255.126:5000/upload'
 
-with open(image_path, 'rb') as image_file:
-    image_content = image_file.read()
+    start_time = time.time()
+    with open(image_path, 'rb') as img:
+        files = {'image': img}
+        response = requests.post(url, files=files)
+        print(response.text)
 
-response = requests.post(pipedream_url, files={"image": image_content})
+    end_time = time.time()
+    execution_time = end_time - start_time
 
-print(response.text)
+    print(f'Execution time: {execution_time:.2f} seconds')
+
+if __name__ == '__main__':
+    upload_image("./samples/maxresdefault.jpg")
