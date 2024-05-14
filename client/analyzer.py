@@ -49,7 +49,7 @@ image_parts = [
 
 prompt_parts = [
     image_parts[0],
-    "Write the output only in JSON format. ProblemDescription, ProblemType(Leakage, PotHoles,Contamination)",
+    "Write the output only in JSON format. ProblemDescription, ProblemType(Leakage,PotHoles,Contamination,Clogged Drains)",
 ]
 
 response = model.generate_content(prompt_parts)
